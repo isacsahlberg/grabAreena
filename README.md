@@ -31,8 +31,8 @@ $ python grabAreena.py -tmrw
 - Due to the html data used being so un-clean, it's kind of hopeless to try and even separate composer vs. piece... 😒
 
 
-### TODO:
-- Requirements (python3, only non-standard package is 'termcolor')
+### Requirements:
+- python3, only non-standard package is 'termcolor'
 
 
 
