@@ -1,9 +1,12 @@
 
 ### grabAreena
 
-Are you a fan of classical music? In particular, do you listen to it live on the Finnish radio, because you are 
-fed up with lists 
-and bookmarks, and listening to music live keeps you centered in the present? Are you so lazy that you can't be bothered to search through the day's pieces for your favorite composers to see _when exactly_ you should remember to have the radio on? And do you listen to it on the Finnish radio? If you answered yes to all of these, you are most likely me, and you should probably stop writing this silliness and do something else. But nevertheless, _grabAreena_ is for you!
+Are you a fan of classical music? In particular, do you listen to it live on the radio, because you are 
+fed up with lists and bookmarks, and listening to music live keeps you centered in the present?
+Are you so lazy that you can't be bothered to search through the day's pieces for your favorite composers 
+to see _when exactly_ you should remember to have the radio on? And do you listen to it on the Finnish radio?
+If you answered yes to all of these, you are most likely me, and you should probably stop writing this silliness and do something else.
+But nevertheless, _grabAreena_ is for you!
 
 _grabAreena_ performs a simple html grab of the list of pieces played during a given day on the classical channel of the Finnish Yle ~~radio~~ Areena (yeah, sorry, this is tailored for a very niche audience, most likely just me, like we established above). It massages the html string to create a list of the useful information, i.e. the beginning times, end times and the pieces themselves. But we don't want to read it all, of course, so we pick out only the ones we want. Use your own _"pattern"_ to match the composer, or just use the default ones. 
 
