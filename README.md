@@ -27,12 +27,12 @@ $ python grabAreena.py -tmrw
 
 ### Note:
 - The language of the data set itself (i.e. the output) is Finnish
-- The yle website doesn't have data for all days of the year, but more like XXXXX (a month forward?) (and backward?)
+- The yle website doesn't have data for all days of the year, only 1-2 days backwards, and a handful of days forward.
 - Due to the html data used being so un-clean, it's kind of hopeless to try and even separate composer vs. piece... 😒
 
 
-### Requirements:
-- python3, only non-standard package is 'termcolor'
+### TODO:
+- Requirements (```python3```, only non-standard package is ```termcolor```)
 
 
 
