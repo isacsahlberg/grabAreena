@@ -1,5 +1,5 @@
 # ignore the weird __pycache__ folder from python, just for fun
 __pycache__/
 
-# ignore TODO
-TODO.txt
+# ignore TODO -- actually, do not
+# TODO.txt
