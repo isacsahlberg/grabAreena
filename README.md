@@ -32,7 +32,7 @@ $ python grabAreena.py -tmrw
 
 
 ### Requirements:
-- ```python3```, only non-standard package is ```termcolor```
+- ```python3``` -- only non-standard package is ```termcolor```
 
 
 
