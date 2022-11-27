@@ -190,24 +190,25 @@ def getMatches(time_piece_tuples, pattern, endtime, color=True):
     list_matches = []
     for i,(t,piece) in enumerate(time_piece_tuples):
         if i == len(time_piece_tuples)-1:
-            # t2 = ' [end]'
             t2 = endtime
         else:
             t2, _ = time_piece_tuples[i+1]
         
-        # print(f"{t} --> {t2}  --->  {piece} \n")
         if pattern.lower() in piece.lower():
 
             if color:
                 piece = repl_str(piece, pattern)
             
-            if len(piece) > 250:
-                piece += '\n'+' '*6
-                piece += 'NOTE: -Long description may indicate mid-day program'
-                piece += '\n'+' '*12
-                piece += '-Start/end time not necessarily accurate for the matching piece'
-            # list_matches.append(t+' --  '+piece)          # aligning times since they 
-            list_matches.append(t.rjust(6)+' -'+t2.rjust(6)+'  --  '+piece)  # may include leading "+"-symbol
+            # How to handle midday programs, where the times are not given beforehand in the dataset?
+            # If the description is long and the hour of the start time is roughly midday, then give a friendly warning
+            if len(piece) > 250 and int(t[:2]) in [12,13,14]:
+                piece += '\n'+' '*4
+                piece += '💀 NOTE: -Possibly mid-day program with a long description'
+                piece += '\n'+' '*4+'💀'+' '*7
+                piece += '-The start/end time not necessarily accurate for the matching piece'
+            
+            # Aligning the entries, and the times may include leading "+"-symbol
+            list_matches.append(t.rjust(6)+' -'+t2.rjust(6)+'  --  '+piece)
     return list_matches
 
 
