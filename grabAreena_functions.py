@@ -18,13 +18,19 @@ def parser_():
 
 
 def setDate(args):
+    '''
+    Set the date based on the given arguments. 
+    If none are given, use the current date.
+    If the date was specified using --day [and --month]
+        but --tomorrow is used, override to tomorrow's date.
+    '''
+
     # Default time is now
     today = date.today()
     today_m = today.month
     today_d = today.day
 
     if args.day:
-        date_specified = True
         if len(args.day) in [1,2]:
             today_d = int(args.day)
         if args.month:
@@ -38,7 +44,7 @@ def setDate(args):
             print(f' -- going with "tomorrow", i.e. {today})')
         today_m = today.month
         today_d = today.day
-    # So arrive at the date
+    # So we arrive at the date
     return date(today.year, today_m, today_d)
 
 
