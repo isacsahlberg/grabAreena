@@ -27,9 +27,10 @@ $ python grabAreena.py -tmrw
 
 ### Note:
 - The language of the data set itself (and therefore the output) is Finnish
-- The yle website doesn't have data for all days of the year, only 1-2 days backwards, and a handful of days forward
+- The yle website doesn't have data for all days of the year, only 1-2 days backwards, and anywhere from a handful of days forward to up to 2 weeks forward
 - Due to the html data used being so un-clean, it's kind of hopeless to try and even separate composer vs. piece... 😒
 In fact, sometimes the time is given with an extra space as "HH: MM", ruining the separation of pieces altogether
+- Sometimes, parts of the day's program is missing from the page we use, even if it is available elsewhere. Maybe one day we'll switch over to that other page if it seems like a good idea, but for now, ```¯\_(ツ)_/¯```
 
 ### Requirements:
 - ```python3``` -- only non-standard package is ```termcolor```

@@ -13,6 +13,7 @@ def parser_():
     parser.add_argument("--tomorrow", "-tmrw", action='store_true', help='force date to be "tomorrow"')
     parser.add_argument("--nocolor", "-nc", action='store_true', help='skip highlighting matches with color')
     parser.add_argument("--giveall", "-ga", action='store_true', help='print all times/pieces for the day')
+    parser.add_argument("--giveurl", "-gu", action='store_true', help='print url for easy copy-pasting and checking')
     # return parser.parse_args()  # (fails running interactively...)
     return parser.parse_known_args()[0]
 

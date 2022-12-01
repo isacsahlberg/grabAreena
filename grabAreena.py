@@ -27,6 +27,9 @@ today = setDate(args)
 # Make appropriate URL corresponding to the chosen date
 url = makeURL(today)
 
+if args.giveurl:
+    print(f"\nOkay, here's the url used:\n----> {url}", end='')
+
 # Grab html from the url
 enc = "ISO-8859-1"  # This encoding found in the HTML of the yle.fi website (may change?)
 html_str = urlopen(url).read().decode(enc)
