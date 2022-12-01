@@ -51,6 +51,6 @@ if args.giveall:
     printAllPieces(pieces)
 
 # Finally, grab matches and print
-matches = makeMatchesList(pieces, pattern_list, endtime, color)
+matches, linebreaks = makeMatchesList(pieces, pattern_list, endtime, color)
 
-printMatches(matches, pattern_list, today)
+printMatches(matches, linebreaks, pattern_list, today)

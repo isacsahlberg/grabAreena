@@ -219,7 +219,7 @@ def getMatches(time_piece_tuples, pattern, endtime, color=True):
     return list_matches
 
 
-def printMatches(matches, pattern, today):
+def printMatches(matches, linebreaks, pattern, today):
     assert isinstance(pattern, list), 'please input a list'
 
     if isinstance(pattern, str):
@@ -227,7 +227,8 @@ def printMatches(matches, pattern, today):
     else:
         pattern_str = ', '.join(['"'+pat+'"' for pat in pattern])
         
-    N_matches = len(matches) - (len(pattern) - 1)  # removing '----' lines
+    # N_matches = len(matches) - (len(pattern) - 1)  # removing '----' lines
+    N_matches = len(matches) - linebreaks # removing '----' lines
 
     if N_matches>0:
         print("\n"*4 + f'----> There are {N_matches} entries matching {pattern_str} ',end='')
@@ -244,12 +245,16 @@ def printMatches(matches, pattern, today):
 
 
 def makeMatchesList(pieces, pattern_list, endtime, color):
-    matches = []
+    matches, linebreaks = [], 0
+
     N_patterns = len(pattern_list)
     for i,pattern in enumerate(pattern_list):
-        matches += getMatches(pieces, pattern, endtime, color=color)
-        matches += ['--------------'] if i<N_patterns-1 else ''
-    return matches
+        match = getMatches(pieces, pattern, endtime, color=color)
+        if matches and match:
+            matches += ['--------------']
+            linebreaks += 1
+        matches += match
+    return matches, linebreaks
 
 
 # For debugging/clarification purposes
