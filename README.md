@@ -55,7 +55,7 @@ produed the output
 - Sometimes, parts of the day's program is missing from the page we use, even if it is available elsewhere. Maybe one day we'll switch over to that other page if it seems like a good idea, but for now, ```¯\_(ツ)_/¯```
 - Requires ```python3```, only non-standard package is ```termcolor```
 - There are a few other arguments which can be given, e.g. ```--giveall``` additionally prints the entire set of pieces for the day, in readable form
-
+- Noobtip: on Unix, using ```chmod```, you can make the script an executable (the shebang ```#!/usr/bin/env python3``` is already included), and aliasing a keyword to the location of the script allows you to simply run e.g. ```grabAreena``` from anywhere — the convenience is what the script was originally intended for!
 
 Usual web scraping ethics apply. Don't be a tool and use this is a loop with zillions of calls. 
 (Instead, *use* this tool, and-- get it? cause, tool?-- oh, they already left...)
