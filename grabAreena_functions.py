@@ -24,8 +24,8 @@ def parser_():
         help="skip highlighting matches with color",
     )
     parser.add_argument(
-        "--giveall",
-        "-ga",
+        "--all",
+        "-a",
         action="store_true",
         help="print all times/pieces for the day",
     )
@@ -37,7 +37,7 @@ def parser_():
     )
     parser.add_argument(
         "--programs",
-        "-gp",
+        "-prg",
         action="store_true",
         help="print all program names and times for the day",
     )
@@ -188,7 +188,7 @@ def getContents(html_str, program_times):
     return program_contents, program_lengths
 
 
-def massagePieces(list_pieces):
+def massagePieces(list_pieces, addMorningPlus=True):
     # 1 -- The data has a mix of single and double digits
     # e.g.  8:45   09:00   9:21 ... so add a missing zero, if it is needed
     for i, (t, p) in enumerate(list_pieces):
@@ -197,16 +197,21 @@ def massagePieces(list_pieces):
             list_pieces[i] = ("0" + t, p)
 
     # 2 -- Fix next-morning times to have a '+' in them
-    for i, (t, p) in enumerate(list_pieces):
-        # Assumption: they are all located at the latter half of the list of pieces
-        if i > round(len(list_pieces) / 2):
-            # Check if the time starts with 0
-            if t[0] == "0":
-                list_pieces[i] = ("+" + t, p)
+    if addMorningPlus:
+        for i, (t, p) in enumerate(list_pieces):
+            # Assumption: they are all located at the latter half of the list of pieces
+            if i > round(len(list_pieces) / 2):
+                # Check if the time starts with 0
+                if t[0] == "0":
+                    list_pieces[i] = ("+" + t, p)
     return list_pieces
 
 
 def getPieces(contents):
+    # If the input is just a string, wrap it into a list
+    if isinstance(contents, str):
+        contents = [contents]
+
     pieces = []
     for cont in contents:
         # Split for single- OR double-digit hours
@@ -287,7 +292,6 @@ def printMatches(matches, linebreaks, pattern, today):
 
 def makeMatchesList(pieces, pattern_list, endtime, color):
     matches, linebreaks = [], 0
-
     N_patterns = len(pattern_list)
     for i, pattern in enumerate(pattern_list):
         match = getMatches(pieces, pattern, endtime, color=color)
@@ -298,9 +302,19 @@ def makeMatchesList(pieces, pattern_list, endtime, color):
     return matches, linebreaks
 
 
-# For debugging/clarification purposes
-# If specified "--giveall", print all times and pieces
-def printAllPieces(pieces):
-    print("\n\n---> OK, here are all times/pieces for the day:")
+### The following is just for debugging/clarification purposes
+def printAllPieces(pieces, verbose=True):
+    if verbose:
+        print("\n\n---> OK, here are all times/pieces for the day:")
     for t, p in pieces:
         print(t, "--", p)
+
+
+# If specified "--all" (or "-a"), print all programs and pieces with their times
+def printAllProgramsAndPieces(programs, program_times, program_contents):
+    print("\n\n\n---> OK, here are all programs and their contents for the day:\n")
+    for program, (t1, t2), content in zip(programs, program_times, program_contents):
+        print(f"---> {t1} -{t2}  -- ", program)
+        pieces_ = massagePieces(getPieces(content), addMorningPlus=False)
+        printAllPieces(pieces_, verbose=False)
+        print("")

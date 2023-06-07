@@ -47,8 +47,9 @@ pieces = getPieces(program_contents)
 pieces = massagePieces(pieces)
 
 # If specified "--giveall", print all times and pieces (for debugging purposes)
-if args.giveall:
-    printAllPieces(pieces)
+if args.all:
+    # printAllPieces(pieces) # old but crude, below is better
+    printAllProgramsAndPieces(programs, program_times, program_contents)
 
 # If specified "--programs", print all program names and their lengths
 if args.programs:
