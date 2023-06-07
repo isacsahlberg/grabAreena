@@ -30,16 +30,15 @@ if args.giveurl:
     print(f"\nOkay, here's the url used:\n----> {url}", end="")
 
 # Grab html from the url
-enc = (
-    "ISO-8859-1"  # This encoding found in the HTML of the yle.fi website (may change?)
-)
+# This encoding found in the HTML of the yle.fi website (may change?)
+enc = "ISO-8859-1"
 html_str = urlopen(url).read().decode(enc)
 
 # Get program names and their (start,end) times
 programs, program_times, endtime = getProgramsAndTimes(html_str)
 
 # Extract the program contents, one long string (with all pieces) for each program
-program_contents = getContents(html_str, program_times)
+program_contents, program_lengths = getContents(html_str, program_times)
 
 # List all pieces for the day
 pieces = getPieces(program_contents)
@@ -50,6 +49,10 @@ pieces = massagePieces(pieces)
 # If specified "--giveall", print all times and pieces (for debugging purposes)
 if args.giveall:
     printAllPieces(pieces)
+
+# If specified "--programs", print all program names and their lengths
+if args.programs:
+    printPrograms(programs, program_lengths, program_times, endtime, today)
 
 # Finally, grab matches and print
 matches, linebreaks = makeMatchesList(pieces, pattern_list, endtime, color)
