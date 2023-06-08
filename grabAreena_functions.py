@@ -2,7 +2,13 @@
 import argparse
 from datetime import date, timedelta
 import re
-from termcolor import colored
+
+# If we can't import termcolor, then let's just redefine 'colored' to do nothing
+try:
+    from termcolor import colored
+except ImportError:
+    print("\n(You do not have 'termcolor' installed -- no colors for you!)")
+    colored = lambda x, y, z: x
 
 
 def parser_():
@@ -314,7 +320,7 @@ def printAllPieces(pieces, verbose=True):
 def printAllProgramsAndPieces(programs, program_times, program_contents):
     print("\n\n\n---> OK, here are all programs and their contents for the day:\n")
     for program, (t1, t2), content in zip(programs, program_times, program_contents):
-        print(f"---> {t1} -{t2}  -- ", program)
+        print(f"---> {t1} - {t2}  -- ", program)
         pieces_ = massagePieces(getPieces(content), addMorningPlus=False)
         printAllPieces(pieces_, verbose=False)
         print("")
