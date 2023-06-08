@@ -1,2 +1,4 @@
-The midday program check is still stupid,
+- The midday program check is still stupid,
 just check for the program name matching... whatever it's called
+
+- Add checker for the termcolor package, it's pretty easy
