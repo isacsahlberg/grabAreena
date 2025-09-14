@@ -1,0 +1,394 @@
+{
+  "apiVersion": "1.3.7604",
+  "meta": {
+    "offset": 0,
+    "limit": 100,
+    "count": 6,
+    "analytics": {
+      "context": {
+        "comscore": {
+          "yle_referer": "schedules.yle-klassinen.2025-09-14"
+        },
+        "yle": {
+          "source_ref": "schedules.yle-klassinen.2025-09-14"
+        }
+      }
+    }
+  },
+  "data": [
+    {
+      "title": "Yöklassinen",
+      "description": "Humperdinck: Unipantomiimi oopp. Hannu ja Kerttu (RCA Victor -orkesteri/Fritz Reiner).\n\n00:55 C. Stamitz: Klarinettikonsertto n:o 7 Es-duuri (Andreas Ottensamer ja Kammerakademie Potsdam).\n\n01:16 Dvorák: Slaavilaisia tansseja (Clevelandin ork./George Szell).\n\n02:31 Respighi: Sei pezzi (Kuusi kappaletta) (Marcia Crayford, viulu, ja Diana Ambache, piano).\n\n02:56 di Lasso: Missa Osculetur me (The Tallis Scholars/Peter Phillips).\n\n03:19 Parry (sov. Dibble): Nonetto B-duuri (Capricorn).\n\n03:43 W.A. Mozart: Muunnelmia pianolle G-duuri Gluckin aariasta Unser dummer Pöbel meint (Walter Gieseking).\n\n03:58 J. Haydn: Jousikvartetto n:o 39 C-duuri (Lintukvartetto) (Janácek-kvartetti).\n\n04:20 Tshaikovski: Sinfonia n:o 6 h-molli (Pateettinen) (Amsterdamin Concertgebouw-ork./Antal Dorati).\n\n05:06 Bizet: Nadirin ja Leilan duetto oopp. Helmenkalastajat (Giuseppe di Stefano, tenori, ja Rosanna Carteri, sopraano, sekä Milanon SO/Antonio Tonini).\n\n05:17 Beecham - Händel: Love in Bath, balettisarja orkesterille (Lontoon kuninkaallinen FO/Thomas Beecham).\n\n05:36 Arriaga: Sinfonia D-duuri (Lontoon Mozart-soittajat/Harry Blech).\n\n05:59 Collan: På Roines strand (Roineen rannalla) (Raimo Laukka, baritoni, ja Pentti  Kotiranta, piano).\n\n06:04 Schubert: Kolme pianokappaletta (Risto Lauriala, piano).\n\n06:30 Dowland: Fantasia d-molli (David Russell, kitara).\n\n06:32 Graupner: Sarja orkesterille ja continuolle G-duuri (Das Kleine Konzert/Hermann Max).\n\n06:52 Telemann: Triosonaatti F-duuri (Peter Hannan, nokkahuilu, Colin Tilney, cembalo, ja Christel Thielmann, viola da gamba).",
+      "pointer": {
+        "type": "program",
+        "uri": "yleareena://items/1-75739585"
+      },
+      "labels": [
+        {
+          "type": "broadcastStartDate",
+          "formatted": "0.45",
+          "raw": "2025-09-14T00:45:00+03:00",
+          "rawType": "date"
+        },
+        {
+          "type": "broadcastEndDate",
+          "raw": "2025-09-14T07:00:00+03:00",
+          "rawType": "date"
+        },
+        {
+          "type": "duration",
+          "formatted": "6 h 15 min",
+          "raw": "PT22500S",
+          "rawType": "duration"
+        },
+        {
+          "type": "ondemandStatus",
+          "raw": "current"
+        },
+        {
+          "type": "seriesLink",
+          "pointer": {
+            "uri": "yleareena://items/1-50464923"
+          }
+        },
+        {
+          "type": "broadcastStatus",
+          "raw": "expired"
+        },
+        {
+          "type": "broadcastServiceType",
+          "raw": "RadioChannel"
+        },
+        {
+          "type": "region",
+          "raw": "World"
+        },
+        {
+          "type": "mediaType",
+          "raw": "audio"
+        }
+      ],
+      "presentation": "scheduleCard",
+      "controls": [
+        {
+          "type": "navigator",
+          "destination": {
+            "type": "program",
+            "uri": "yleareena://items/1-75739585"
+          },
+          "title": "Kuuntele alusta",
+          "backgroundColor": "#29CCDE"
+        }
+      ],
+      "type": "card"
+    },
+    {
+      "title": "Aamuklassinen",
+      "description": "Cailo: Sonaatti kolmelle viululle ja uruille (Cappella Della Pietà de' Turchini/Antonio Florio).\n\n07:09 Sacco: Litaneae Lauretanae (Templum Musicae/Vincenzo Di Donato, sekä Francesco Di Lernia, urut).\n\n07:17 Dowland: Dowland's galliard (David Russell, kitara).\n\n07:20 Naudot: Konsertto G-duuri nokkahuilulle, jousille ja continuolle (Frans Brüggen ja Wienin Concentus Musicus/Nikolaus Harnoncourt).\n\n07:32 Vejvanovský: Serenadi C-duuri (Trompeten Consort Friedemann Immer ja Ensemble Tama).\n\n07:41 W.A. Mozart: Konsertto käyrätorvelle ja orkesterille n:o 1 D-duuri (RSO/Kalervo Kulmala, käyrätorvi ja joht.).\n\n07:51 Pezel: Sonaatteja vaskikvintetille (Viva Brass -kvartetti). \n\n08:06 J.S. Bach: Brandenburgilainen konsertto n:o 5 D-duuri (Philadelphian ork./Leopold Stokowski).\n\n08:33 Locke: Sarja n:o 2 (Kitgut Quartet). \n\n08:42 Béarn: Sarja bal. Rakkauden valtakunta (Chatham Baroque ja Danny Mallon, lyömäsoittimet).\n\n08:51 Lambert: Le Repos, l'ombre, le silence (Rauha, varjo, hiljaisuus) (Les Arts Florissants/William Christie).\n\n08:59 J.S. Bach: Sonaatti viululle ja klaveerille n:o 5 f-molli (Michelle Makarski, viulu, ja Keith Jarrett, piano).\n\n09:18 W.A. Mozart: Oboekonsertto C-duuri (Leon Goossens ja Sinfonia of LOndon/Colin Davis).\n\n09:40 Telemann: Sarja viola da gamballe, jousille ja continuolle D-duuri (Alkusoitto ja sarja) (Le concert des nations/Jordi Savall).\n",
+      "pointer": {
+        "type": "program",
+        "uri": "yleareena://items/1-75739595"
+      },
+      "labels": [
+        {
+          "type": "broadcastStartDate",
+          "formatted": "7.00",
+          "raw": "2025-09-14T07:00:00+03:00",
+          "rawType": "date"
+        },
+        {
+          "type": "broadcastEndDate",
+          "raw": "2025-09-14T10:00:00+03:00",
+          "rawType": "date"
+        },
+        {
+          "type": "duration",
+          "formatted": "3 h 0 min",
+          "raw": "PT10800S",
+          "rawType": "duration"
+        },
+        {
+          "type": "ondemandStatus",
+          "raw": "current"
+        },
+        {
+          "type": "seriesLink",
+          "pointer": {
+            "uri": "yleareena://items/1-50464924"
+          }
+        },
+        {
+          "type": "broadcastStatus",
+          "raw": "expired"
+        },
+        {
+          "type": "broadcastServiceType",
+          "raw": "RadioChannel"
+        },
+        {
+          "type": "region",
+          "raw": "World"
+        },
+        {
+          "type": "mediaType",
+          "raw": "audio"
+        }
+      ],
+      "presentation": "scheduleCard",
+      "controls": [
+        {
+          "type": "navigator",
+          "destination": {
+            "type": "program",
+            "uri": "yleareena://items/1-75739595"
+          },
+          "title": "Kuuntele alusta",
+          "backgroundColor": "#29CCDE"
+        }
+      ],
+      "type": "card"
+    },
+    {
+      "title": "Aamupäivän klassinen",
+      "description": "Randel: Jousikvartetto f-molli (Upsalan kamarisolistit).\n\n10:30 Albinoni: Konsertto D-duuri (Ludvig Güttler, trumpetti, ja Friedrich Kircheis, urut).\n\n10:39 Alberto Williams: Primera obertura de concierto (Norjan RO/Miguel Harth-Bedoya).\n\n10:49 Heberle: Nokkahuilukonsertto G-duuri (Michala Petri ja Saint Paulin kamariork./Pinchas Zukerman).\n\n11:04 Norman: Waldlieder (Metsälauluja) (Claes-Håkan Ahnsjö, tenori, ja Alfons Kontarsky, piano).\n\n11:20 Platti: Oboekonsertto g-molli (Hans-Peter Westermann ja Neue Düsseldorfer Hofmusik/Mary Utiger).\n\n11:32 Onslow: Jousikvartetto g-molli (Mandelring Quartett).\n\n11:56 J.S. Bach: Partita klaveerille n:o 2 c-molli (Piotr Anderszewski, piano).\n\n12:18 Küffner: Johdanto, teema ja muunnelmia B-duuri (Jon Manasse, klarinetti, ja Manhattan-jousikvartetti).\n\n12:31 Donizetti: Enricon ja Giovannan kohtaus oopp. Anna Bolena (Robert El Hage, basso, ja Shirley Verrett, mezzosopraano. sekä IItalian RCA:n ork./Georges Prêtre).\n\n12:40 Telemann: Konsertto nokkahuilulle, viola da gamballe, jousille ja continuolle a-molli (Pierre Hamon ja Le Concert des Nations/Jordi Savall).\n\n12:58 Raff (sov. de Sarasate): La Fée d'amour (Yang Tianwa, viulu, ja Markus Hadulla, piano).\n\n13:16 Locatelli: Concerto grosso g-molli op.1/12 (Europa Galante/Fabio Biondi, viulu).\n\n13:27 Wolf: Italialainen serenadi (Nomos-kvartetti).\n\n13:36 Dvorák: Tshekkiläinen sarja (Detroitin SO/Antal Dorati).",
+      "pointer": {
+        "type": "program",
+        "uri": "yleareena://items/1-75739680"
+      },
+      "labels": [
+        {
+          "type": "broadcastStartDate",
+          "formatted": "10.00",
+          "raw": "2025-09-14T10:00:00+03:00",
+          "rawType": "date"
+        },
+        {
+          "type": "broadcastEndDate",
+          "raw": "2025-09-14T14:00:00+03:00",
+          "rawType": "date"
+        },
+        {
+          "type": "duration",
+          "formatted": "4 h 0 min",
+          "raw": "PT14400S",
+          "rawType": "duration"
+        },
+        {
+          "type": "ondemandStatus",
+          "raw": "current"
+        },
+        {
+          "type": "seriesLink",
+          "pointer": {
+            "uri": "yleareena://items/1-50464925"
+          }
+        },
+        {
+          "type": "broadcastStatus",
+          "raw": "expired"
+        },
+        {
+          "type": "broadcastServiceType",
+          "raw": "RadioChannel"
+        },
+        {
+          "type": "region",
+          "raw": "World"
+        },
+        {
+          "type": "mediaType",
+          "raw": "audio"
+        }
+      ],
+      "presentation": "scheduleCard",
+      "controls": [
+        {
+          "type": "navigator",
+          "destination": {
+            "type": "program",
+            "uri": "yleareena://items/1-75739680"
+          },
+          "title": "Kuuntele alusta",
+          "backgroundColor": "#29CCDE"
+        }
+      ],
+      "type": "card"
+    },
+    {
+      "title": "Päiväklassinen",
+      "description": "Ziehrer: Valssi oper. Die Landstreicher (Solistiyhtye Imperial/Erkki Karjalainen).\n\n14:04 Weinberger: Polkka ja fuuga oopp. Svanda, säkkipillinsoittaja (Chicagon SO/Fritz Reiner).\n\n14:15 Ryba: Huilukvartetto F-duuri (Jan Ostry, huilu, ja M. Nostitz -kvartetti).\n\n14:34 G. Ortiz: Concierto candela (Ricardo Gallardo, lyömäsoittimet, ja Meksikon kansallisen yliopiston FO/Ronald Zollman).\n\n14:58 Schumann: Dichterliebe (Dietrich Fischer-Dieskau, baritoni, ja Vladimir Horowitz, piano).\n\n15:28 Kokkonen: Jousikvartetto n:o 3 (Jean Sibelius -kvartetti).\n\n15:46 Eybler: Sinfonia n:o 1 C-duuri (Geneven kamariork./Michael Hofstetter).\n\n16:11 Ullmann: Jousikvartetto n:o 3 (Bennewitz-kvartetti).\n\n16:24 Satie: Sports et divertissements (Urheilua ja huvituksia) (Jean-Pierre Armengaud, piano).\n\n16:38 Beethoven: Sekstetto jousikvartetille ja kahdelle käyrätorvelle Es-duuri. (Dennis Brain ja Alan Civil, käyrätorvi, sekä Englantilainen jousikvartetti).\n\n16:53 Bridge: Rebus, alkusoitto (BBC:n Walesin kansallisork./Richard Hickox).\n\n17:05 Copland (sov.): Old American songs 1 (Bruce Hubbard, baritoni, ja St. Luken ork./Dennis Russell Davies).\n\n17:18 Brahms: Pianosonaatti n:o 3 f-molli (Radu Lupu).",
+      "pointer": {
+        "type": "program",
+        "uri": "yleareena://items/1-75739710"
+      },
+      "labels": [
+        {
+          "type": "broadcastStartDate",
+          "formatted": "14.00",
+          "raw": "2025-09-14T14:00:00+03:00",
+          "rawType": "date"
+        },
+        {
+          "type": "broadcastEndDate",
+          "raw": "2025-09-14T18:00:00+03:00",
+          "rawType": "date"
+        },
+        {
+          "type": "duration",
+          "formatted": "4 h 0 min",
+          "raw": "PT14400S",
+          "rawType": "duration"
+        },
+        {
+          "type": "ondemandStatus",
+          "raw": "upcoming"
+        },
+        {
+          "type": "seriesLink",
+          "pointer": {
+            "uri": "yleareena://items/1-50464926"
+          }
+        },
+        {
+          "type": "broadcastStatus",
+          "raw": "current"
+        },
+        {
+          "type": "broadcastServiceType",
+          "raw": "RadioChannel"
+        },
+        {
+          "type": "region",
+          "raw": "World"
+        },
+        {
+          "type": "mediaType",
+          "raw": "audio"
+        }
+      ],
+      "presentation": "scheduleCard",
+      "controls": [
+        {
+          "type": "navigator",
+          "destination": {
+            "type": "service",
+            "uri": "yleareena://services/yle-klassinen"
+          },
+          "title": "Kuuntele suorana",
+          "backgroundColor": "#E90E43"
+        }
+      ],
+      "type": "card"
+    },
+    {
+      "title": "Iltaklassinen",
+      "description": "Pyysalo: Paljain jaloin (Jorma Hynninen, baritoni, ja Ilkka Paananen, piano).\n\n18:03 Pacius: Sinfonia d-molli (RSO/Anna-Maria Helsing).\n\n18:23 Mendelssohn: Pianokonsertto n:o 1 g-molli (Pariisin kamariork./Lars Vogt, piano ja joht.).\n\n18:43 Franck: Duo pianolle 4-kätisesti n:o 1 Britannian kansallislaulusta (Monika Egri ja Attila Pertis).\n\n18:57 Pärt: Festina lente (Kiiruhda hitaasti) (Münchenin RO/Howard Arman).\n\n19:05 Donizetti: Marian cavatina ja cabaletta oopp. Maria Stuarda (Beverly Sills, sopraano, ja Patricia Kern, mezzosopraano, sekä Lontoon FO/Aldo Ceccato).\n\n19:15 J.S. Bach: Sonaatti viola da gamballe ja cembalolle D-duuri. (Mika Suihkonen ja Johannes Vesterinen).\n\n19:30 Händel: Belsassar, oratorio (Anthony Rolfe Johnson, tenori, Arleen Auger, sopraano, Catherine Robbin, altto, James Bowman, kontratenori, David Wilson-Johnson, basso, Nicolas Robertson, tenori, Richard Wistreich, basso, sekä The English Concert - kuoro ja -ork./Trevor Pinnock, cembalo).\n\n22:23 Pauline Viardot: Sonatiini viululle ja pianolle a-molli (Reto Kuppel ja Wolfgang Manz).\n\n22:34 Bizet: Nadirin ja Leilan duetto oopp. Helmenkalastajat (Giuseppe di Stefano, tenori, ja Rosanna Carteri, sopraano, sekä Milanon SO/Antonio Tonini).\n\n22:44 J. Haydn: Sonaatti F-duuri (Divertimento) (Hubert Hoffmann, luuttu, ja Ars Antiqua Austria/Gunar Letzbor).\n\n23:03 Lazzari: Pianotrio g-molli (Thomas Christian Ensemble).",
+      "pointer": {
+        "type": "program",
+        "uri": "yleareena://items/1-75739730"
+      },
+      "labels": [
+        {
+          "type": "broadcastStartDate",
+          "formatted": "18.00",
+          "raw": "2025-09-14T18:00:00+03:00",
+          "rawType": "date"
+        },
+        {
+          "type": "broadcastEndDate",
+          "raw": "2025-09-14T23:40:00+03:00",
+          "rawType": "date"
+        },
+        {
+          "type": "duration",
+          "formatted": "5 h 40 min",
+          "raw": "PT20400S",
+          "rawType": "duration"
+        },
+        {
+          "type": "ondemandStatus",
+          "raw": "upcoming"
+        },
+        {
+          "type": "seriesLink",
+          "pointer": {
+            "uri": "yleareena://items/1-50464927"
+          }
+        },
+        {
+          "type": "broadcastStatus",
+          "raw": "upcoming"
+        },
+        {
+          "type": "broadcastServiceType",
+          "raw": "RadioChannel"
+        },
+        {
+          "type": "region",
+          "raw": "World"
+        },
+        {
+          "type": "mediaType",
+          "raw": "audio"
+        }
+      ],
+      "presentation": "scheduleCard",
+      "type": "card"
+    },
+    {
+      "title": "Yöklassinen",
+      "description": "Franck: Duo n:o 1  B-duuri (Duo concertant) (Tatiana Samouil, viulu, ja David Lively, piano).\n\n23:53 Rimski-Korsakov: Sinfonietta venäläisistä teemoista a-molli (Neuvostoliiton valtion SO/Jevgeni Svetlanov).\n\n00:18 Bizet: Carmenin seguidilla oopp. Carmen (Monica Groop, mezzosopraano, ja RSO/Muhai Tang).\n\n00:21 Chopin: Pianotrio g-molli (Garrick Ohlsson, piano, Carter Brey, sello, ja Leila Josefowicz, viulu).\n\n00:48 Wagner: Syreenikohtaus ja Hans Sachsin monologi oopp. Nürnbergin mestarilaulajat (George London, bassobaritoni, ja Wienin filharmonikot/Hans Knappertsbusch).\n\n01:03 Hummel: Septetto d-molli op.74 (Capricorn).\n\n01:42 Ravel: Hanhiemo-sarja (RSO/Sakari Oramo). \n\n02:00 Czerny: Johdanto, seitsemän muunnelmaa ja finaali (Peter-Lukas Graf, huilu, ja Zsuzsanna Sirokay, piano).\n\n02:17 Tshaikovski: Katkelmia bal. Joutsenlampi (Philadelphian ork./Eugene Ormandy).\n\n03:11 J. Haydn: Luominen, oratorio (Dawn Upshaw, Jon Humphrey, John Cheek, Heidi Grant Murphy ja James Michael McGuire sekä Atlantan kamarikuoro ja Atlantan SO/Robert Shaw).\n\n05:00 Nielsen: Sinfonia n:o 6 (Sinfonia semplice) (Philadelphian ork./Eugene Ormandy).\n\n05:33 Schumann: Liederkreis op.39 (Håkan Hagegård, baritoni ja Thomas Schuback, piano).\n\n06:00 J.S. Bach: Triosonaatti n:o 5 C-duuri (Karl Richter, urut).\n\n06:18 de Visée: Sarja kitaralle n:o 9 d-molli (Rafel Andia, barokkikitara).",
+      "pointer": {
+        "type": "program",
+        "uri": "yleareena://items/1-75739761"
+      },
+      "labels": [
+        {
+          "type": "broadcastStartDate",
+          "formatted": "23.40",
+          "raw": "2025-09-14T23:40:00+03:00",
+          "rawType": "date"
+        },
+        {
+          "type": "broadcastEndDate",
+          "raw": "2025-09-15T06:30:00+03:00",
+          "rawType": "date"
+        },
+        {
+          "type": "duration",
+          "formatted": "6 h 50 min",
+          "raw": "PT24600S",
+          "rawType": "duration"
+        },
+        {
+          "type": "ondemandStatus",
+          "raw": "upcoming"
+        },
+        {
+          "type": "seriesLink",
+          "pointer": {
+            "uri": "yleareena://items/1-50464923"
+          }
+        },
+        {
+          "type": "broadcastStatus",
+          "raw": "upcoming"
+        },
+        {
+          "type": "broadcastServiceType",
+          "raw": "RadioChannel"
+        },
+        {
+          "type": "region",
+          "raw": "World"
+        },
+        {
+          "type": "mediaType",
+          "raw": "audio"
+        }
+      ],
+      "presentation": "scheduleCard",
+      "type": "card"
+    }
+  ]
+}
