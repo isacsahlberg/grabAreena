@@ -36,7 +36,7 @@ def fetch_schedule(channel: str, date: str, force: bool = False) -> dict:
         return json.loads(path.read_text(encoding="utf-8"))
 
     url = API_BASE.format(channel=channel, date=date)
-    print(f"Fetching from API: {url}")
+    print(f"Fetching from API: {url}?&...")
     r = requests.get(url, params=PARAMS, headers=HEADERS, timeout=20)
     r.raise_for_status()
     data = r.json()
