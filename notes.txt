@@ -1,0 +1,24 @@
+Maintainer notes (how to make this the default on GitHub)
+
+Option A (recommended): flip default branch in the UI
+1) Push this branch to origin (if not already).
+2) GitHub → Repo → Settings → Branches → Default branch → select this branch.
+3) Optionally rename the old main to legacy:
+   git checkout main
+   git branch -m legacy-html-backend
+   git push origin legacy-html-backend
+   # in the GitHub UI, delete or archive the old default if desired
+
+Option B: rename this branch to main
+# ensure you’ve changed the default branch in the UI first or there will be errors
+git checkout <json-branch>
+git branch -m main
+git push -u origin main
+# then change default in the UI to main, and rename the old main as above
+
+──────────────────────────────────────────────────────────────────────────────
+
+API endpoint (fixed)
+- URL: https://areena.api.yle.fi/v1/ui/schedules/yle-klassinen/{YYYY-MM-DD}.json
+- Params: app_id=areena-web-items, app_key=wlTs5D9OjIdeS9krPzRQR4I1PYVzoazN, language=fi, v=10, limit=100
+- Keys are public; if Yle rotates them, update cache.py constants.
