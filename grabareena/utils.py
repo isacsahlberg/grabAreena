@@ -14,11 +14,24 @@ def parse_patterns(args_pattern) -> list[str]:
     return patterns
 
 
-def resolve_date(date_str: str | None, tomorrow: bool) -> date:
-    if date_str:
-        # If user gave an explicit date, ignore --tomorrow, print a warning if that flag was also used
-        if tomorrow:
-            print(f"Defaulting to the set 'date': {date_str}")
-        return date.fromisoformat(date_str)
-    base = date.today()
-    return base + timedelta(days=1) if tomorrow else base
+def _parse_date_arg(s: str) -> date:
+    # try full ISO first (YYYY-MM-DD)
+    try:
+        return date.fromisoformat(s)
+    except ValueError:
+        pass
+    # then allow MM-DD (assume current year)
+    try:
+        m, d = map(int, s.split("-", 1))
+        today = date.today()
+        return date(today.year, m, d)
+    except Exception:
+        raise SystemExit(f"Invalid --date: {s} (use YYYY-MM-DD or MM-DD)")
+
+
+def resolve_date(date_str: str, tomorrow: bool, yesterday: bool) -> date:
+    # These arguments will have been mutually exclusive, so simple if statements will do
+    if date_str:  return _parse_date_arg(date_str)
+    if tomorrow:  return date.today() + timedelta(days=1)
+    if yesterday: return date.today() - timedelta(days=1)
+    return date.today()  # If none of the timing flags were used, default to today

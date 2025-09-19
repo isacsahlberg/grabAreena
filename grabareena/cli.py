@@ -9,15 +9,18 @@ from .utils import resolve_date, parse_patterns
 
 def main(argv: Sequence[str] | None = None) -> None:
     ap = argparse.ArgumentParser(prog="grabareena", description="Yle Klassinen schedule grabber")
-    ap.add_argument("-d", "--date", help="YYYY-MM-DD (default: today, Finnish time)")
-    ap.add_argument("-t", "--tomorrow", action="store_true", help="Use tomorrow's date")
-    ap.add_argument("-r", "--refresh", action="store_true", help="Bypass cache (force fetch)")
+    ap.add_argument("-a", "--all", action="store_true", help="Print all pieces")
     ap.add_argument("-p", "--pattern", action="append", help='Pattern(s). Can repeat or use commas, e.g. -p Bach -p Mozart or -p "Bach, Mozart"')
     ap.add_argument("-P", "--programs", action="store_true", help="List program titles/times")
-    ap.add_argument("-a", "--all", action="store_true", help="Print all pieces")
+    ap.add_argument("-r", "--refresh", action="store_true", help="Bypass cache (force fetch)")
+    # Prevent using more than one of the timing options
+    when = ap.add_mutually_exclusive_group()
+    when.add_argument("-d", "--date", metavar="YYYY-MM-DD|MM-DD", help="Date (default: today, Finnish time)")
+    when.add_argument("-t", "--tomorrow", action="store_true", help="Use tomorrow's date")
+    when.add_argument("-y", "--yesterday", action="store_true", help="Use yesterday's date")
 
     args = ap.parse_args(argv)
-    day = resolve_date(args.date, args.tomorrow)
+    day = resolve_date(args.date, args.tomorrow, args.yesterday)
 
     # Single source of truth for the date: used by cache, endpoint, and parsing
     payload = get_schedule(day=day, force=args.refresh)
@@ -52,7 +55,7 @@ def main(argv: Sequence[str] | None = None) -> None:
     # Default mode (no -a/-P): show matches grouped by pattern
     matched = print_matches(programs, patterns)
     if matched == 0:
-        print("\n(No matches for {patterns})")
+        print(f"\n(No matches for {patterns})")
 
 
 if __name__ == "__main__":
