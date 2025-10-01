@@ -45,7 +45,7 @@ def main(argv: Sequence[str] | None = None) -> None:
                     out = _highlight_one(out, pat)
                 return out
             for prog in programs:
-                print(f"\n{prog.start:>5} - {prog.end:<5}  --  {prog.title}")
+                print(f"\n{prog.start:>5} - {prog.end:<5}  --  {prog.title}  --  {prog.url}")
                 for piece in prog.pieces:
                     print(f"  {piece.start:>6} - {piece.end:>6}  --  {_apply_many(piece.description)}")
         else:

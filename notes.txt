@@ -22,3 +22,12 @@ API endpoint (fixed)
 - URL: https://areena.api.yle.fi/v1/ui/schedules/yle-klassinen/{YYYY-MM-DD}.json
 - Params: app_id=areena-web-items, app_key=wlTs5D9OjIdeS9krPzRQR4I1PYVzoazN, language=fi, v=10, limit=100
 - Keys are public; if Yle rotates them, update cache.py constants.
+
+
+-- Todo (?)
+Now we specify (something like)
+   print(f"{p.start:>5} - {p.end:<5}  --  {p.title:<{title_w}}  --  {p.url}")
+twice in print.py and once in cli.py.
+So, consider just having a function like __repr__ or some other "name" function inside the class,
+   and optionally have a "title width" argument which can be first calculated and then used, if
+   you want aligned outputs like for the --programs flag.

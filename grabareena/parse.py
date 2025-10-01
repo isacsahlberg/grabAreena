@@ -13,6 +13,21 @@ def _label(labels, type_, field="raw"):
     return None
 
 
+# def _program_url(payload: dict) -> str | None:
+#     # 1) pointer.uri like 'yleareena://items/1-75853752'
+#     ptr = payload.
+
+_ID_RE = re.compile(r"\b1-\d+\b")
+def _url_from_pointer(pointer: dict):
+    if not isinstance(pointer, dict):
+        return None
+    uri = pointer.get("uri")  # e.g. "yleareena://items/1-75853752"
+    if not isinstance(uri, str):
+        return None
+    m = _ID_RE.search(uri)
+    return f"https://areena.yle.fi/{m.group(0)}" if m else None
+
+
 def _hhmm_to_min(hhmm: str) -> int:
     """Express "HH:MM" in minutes"""
     h, m = map(int, hhmm.split(":"))
@@ -71,6 +86,7 @@ def parse_program(dict_: dict, date_) -> Program:
     title  = dict_.get("title", "")
     desc   = dict_.get("description", "")
     labels = dict_.get("labels", [])
+    url = _url_from_pointer(dict_.get("pointer"))  # pointer = dict_.get("pointer", {})
     start_iso = _label(labels, "broadcastStartDate", field="raw")
     end_iso   = _label(labels, "broadcastEndDate", field="raw")
     if not start_iso or not end_iso:
@@ -96,7 +112,7 @@ def parse_program(dict_: dict, date_) -> Program:
         if text_chunk.strip():
             pieces.append(Piece(start=t1, end=t2, description=text_chunk.strip()))
     
-    return Program(title=title, start=start, end=end, description=desc, pieces=pieces, date=date_)
+    return Program(title=title, start=start, end=end, description=desc, pieces=pieces, date=date_, url=url)
 
 
 def parse_programs(payload: dict, date_: date) -> list[Program]:

@@ -10,7 +10,7 @@ def _highlight_one(text: str, pattern: str) -> str:
     return rx.sub(lambda m: colored(m.group(0), "blue", "on_cyan"), text)
 
 
-def print_matches(programs: Iterable[Program],
+def print_matches(programs: list[Program],
                              patterns: Sequence[str],
                              divider: str = " --------------") -> int:
     """
@@ -38,13 +38,15 @@ def print_matches(programs: Iterable[Program],
     return total
 
 
-def print_programs(programs: Iterable[Program]) -> None:
+def print_programs(programs: list[Program]) -> None:
+    title_w = max(len(p.title) for p in programs)
     for p in programs:
-        print(f"{p.start:>5} - {p.end:<5}  --  {p.title}")
+        print(f"{p.start:>5} - {p.end:<5}  --  {p.title:<{title_w}}  --  {p.url}")
 
 
-def print_all_pieces(programs: Iterable[Program]) -> None:
+
+def print_all_pieces(programs: list[Program]) -> None:
     for p in programs:
-        print(f"\n{p.start:>5} - {p.end:<5}  --  {p.title}")
+        print(f"\n{p.start:>5} - {p.end:<5}  --  {p.title}  --  {p.url}")
         for piece in p.pieces:
             print(f"  {piece}")

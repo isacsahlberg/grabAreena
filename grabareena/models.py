@@ -21,6 +21,7 @@ class Program:
     description: str
     pieces: List[Piece]
     date: date
+    url: str | None = None
 
     def __str__(self):
         return f"=== {self.title} ({self.start} -> {self.end}) ==="
