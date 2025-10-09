@@ -13,10 +13,6 @@ def _label(labels, type_, field="raw"):
     return None
 
 
-# def _program_url(payload: dict) -> str | None:
-#     # 1) pointer.uri like 'yleareena://items/1-75853752'
-#     ptr = payload.
-
 _ID_RE = re.compile(r"\b1-\d+\b")
 def _url_from_pointer(pointer: dict):
     if not isinstance(pointer, dict):

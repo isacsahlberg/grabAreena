@@ -1,6 +1,20 @@
-### grabAreena — JSON rewrite (new-data-backend)
+### grabAreena
 
-Working rewrite that uses Yle’s JSON schedule endpoint, replacing the old HTML scraper.
+Are you a fan of classical music?
+In particular, do you listen to it live on the radio, because you are fed up with lists and bookmarks, and listening to music live keeps you centered in the present?
+Are you so lazy that you can't be bothered to search through the day's pieces for your favorite composers to see _when exactly_ you should remember to have the radio on?
+And do you listen to it on the Finnish radio? If you answered yes to all of these, you are most likely me, and you should probably stop writing this silliness and do something else.
+But nevertheless, _grabAreena_ is for you!
+
+Under the hood, _grabAreena_ retrieves the schedule from Yle Areena's JSON schedule endpoint, caches it locally, and parses programme descriptions into pieces along with useful information.
+By default, it outputs only the matching pieces that we are looking for -- use your own `pattern` to match the composer or performer, or just use the default ones.
+
+### Highlights:
+- Works for a chosen date, defaults to today
+- Fast and polite: responses are cached under `~/.cache/grabareena/...`
+- Clean output with start-end times, supports midnight rollover (`+00:30` style)
+- Simple pattern matching, supports single and multiple strings
+- Additional information available using other flags (see below)
 
 ---
 
