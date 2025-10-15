@@ -25,9 +25,11 @@ API endpoint (fixed)
 
 
 -- Todo (?)
-Now we specify (something like)
+-Now we specify (something like)
    print(f"{p.start:>5} - {p.end:<5}  --  {p.title:<{title_w}}  --  {p.url}")
-twice in print.py and once in cli.py.
-So, consider just having a function like __repr__ or some other "name" function inside the class,
-   and optionally have a "title width" argument which can be first calculated and then used, if
-   you want aligned outputs like for the --programs flag.
+  twice in print.py and once in cli.py.
+  So, consider just having a function like __repr__ or some other "name" function inside the class,
+  and optionally have a "title width" argument which can be first calculated and then used, if
+  you want aligned outputs like for the --programs flag.
+-Would be interesting to implement a logging thing, like any time grabAreena is function,
+  the request gets logged somewhere. Don't know if that is useful for anything yet, but could be fun. 
