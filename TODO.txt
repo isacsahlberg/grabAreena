@@ -1,2 +1,0 @@
-- The midday program check is still stupid,
-just check for the program name matching... whatever it's called
