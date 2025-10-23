@@ -2,3 +2,6 @@ obsolete/
 
 # local API cache
 .cache_/
+
+# build artifacts
+build/

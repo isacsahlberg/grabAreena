@@ -14,8 +14,8 @@ dev = [
     "ipykernel>=6.30.1",
 ]
 
+# since v0.3.0, we make this project a uv-installable command-line tool (called 'grabareena')
 [project.scripts]
-grabareena = "grabareena.cli:main"
-
+grabareena = "grabareena.cli:main"  # points to what is run
 [tool.setuptools]
-packages = ["grabareena"]
+packages = ["grabareena"]           # points to the folders to be included in this package

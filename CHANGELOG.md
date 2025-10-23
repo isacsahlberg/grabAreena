@@ -7,6 +7,18 @@ All notable changes to this project will be documented here.
 [For new updates, add content here, rename this header to the new version (e.g. `[0.2.1]`), and create a new Unreleased one above.]
 
 
+
+## [0.3.0] - 2025-10-23
+Instead of running `./main.py` which just calls `grabareena/cli.py`, this version makes the project a uv-installable command-line tool: `grabareena` → `grabareena.cli:main`, and is installable using
+```bash
+uv tool install .
+```
+There is still a `run_dev.py` in the repo root for local development, which doesn't change the tool itself. To update local edits, run
+```bash
+uv tool install --force .
+```
+
+
 ## [0.2.0] - 2025-10-09
 ### Added
 - New CLI (`main.py` / `grabareena/cli.py`). Usual flags (output differs a bit from previous version):

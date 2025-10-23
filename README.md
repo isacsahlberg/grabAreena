@@ -20,37 +20,56 @@ By default, it outputs only the matching pieces that we are looking for -- use y
 
 
 ### Requirements
-- Python 3.11+
 - [uv](https://github.com/astral-sh/uv)
+- Python 3.13+
+
+(`uv` will automatically use or install a compatible Python.)
 
 
 ### Setup
-1) Clone and switch branch:
+1) Clone the repo:
 ```bash
 git clone https://github.com/isacsahlberg/grabAreena.git
 cd grabAreena
-git checkout new-data-backend
 ```
-2) Install dependencies with uv:
+2) Install the command-line tool using uv:
 ```bash
-uv sync
+uv tool install .
 ```
-This creates a `.venv` and adds/installs dependencies like `requests`, `termcolor`.
+`uv` builds the package, resolves and installs dependencies (e.g., `requests`, `termcolor`) into an isolated tool environment, and adds a `grabareena` command to your `PATH`.
+
+3) Run
+```bash
+grabareena --help
+```
+to verify the installation.
+For uninstalling, run
+```bash
+uv tool uninstall grabareena
+```
 
 
 ### Project structure
 ```bash
 grabAreena/
-├─ main.py
 ├─ pyproject.toml
+├─ README.md
+├─ CHANGELOG.md
 └─ grabareena/
    ├─ __init__.py
-   ├─ cli.py
    ├─ cache.py
-   ├─ parsing.py
-   ├─ printing.py
+   ├─ cli.py
    ├─ models.py
+   ├─ parse.py
+   ├─ print.py
    └─ utils.py
+```
+There's also the development helpers that are not packaged
+```bash
+├─ run_dev.py       # tiny runner for local dev
+├─ uv.lock
+└─ .python-version
+├─ .python-version
 ```
 
 
@@ -66,11 +85,7 @@ grabAreena/
 
 ### Usage
 ```bash
-uv run python main.py [OPTIONS]
-
-# alternatively
-source .venv/bin/activate
-python main.py [OPTIONS]
+grabareena [OPTIONS]
 ```
 
 
@@ -86,33 +101,49 @@ python main.py [OPTIONS]
 If you skip the flags altogether, the date defaults to today, and the pattern to a pre-defined set of composers.
 
 
-### Recommended: You can run this tool from anywhere using uv:
-```bash
-uv run --project ~/path/to/repo python ~/path/to/repo/main.py
-```
-in particular, the easiest way to have this tool easily available is using an alias on the full `uv` command:
-```bash
-alias grabAreena='uv run --project ~/path/to/repo python -m ~/path/to/repo/main.py'
-```
-
-
-### Usage examples (assuming you use the above alias)
+### Usage examples
 ```bash
 # Default date is today
-grabAreena                          # find matches for default pattern arguments, today
-grabAreena -t                       # find matches for default pattern arguments, tomorrow
+grabareena                          # find matches for default pattern arguments, today
+grabareena -t                       # find matches for default pattern arguments, tomorrow
 # The simple flags can be combined
-grabAreena -a                       # print the entire schedule for today
-grabAreena -at                      # print the entire schedule for tomorrow
+grabareena -a                       # print the entire schedule for today
+grabareena -at                      # print the entire schedule for tomorrow
 # Pattern flags can be compounded
-grabAreena -p "Bach, Mozart"        # find matches for specific composers (or any program substrings)
-grabAreena -p "Bach" -p "Mozart"    # same
+grabareena -p "Bach, Mozart"        # find matches for specific composers (or any program substrings)
+grabareena -p "Bach" -p "Mozart"    # same
 ```
 Combining many just looks like this
 ```bash
-grabAreena --date 2025-12-24 --all --pattern "Bach"
+grabareena --date 2025-12-24 --all --pattern "Bach"
 ```
 Attempting to access data for dates more than ±3 days away from today will probably fail, you'll just get something like: `{"developerMessage":"Specified date is beyond current program guide scope"`. One week into the past seems to be working fine.
+
+
+### Dev usage: You can run the most up-to-date version of the tool in the repo (without reinstalling) using uv
+```bash
+# run the package module
+uv run -m grabareena.cli --help
+
+# alternatively, run the tiny helper
+uv run run_dev.py [OPTIONS]
+
+# or equivalently
+source .venv/bin/activate
+python run_dev.py [OPTIONS]
+```
+or from anywhere:
+```bash
+uv run --project ~/path/to/repo ~/path/to/repo/run_dev.py
+```
+The easiest way is probably to use alias on the full `uv` command:
+```bash
+alias grabAreena_dev='uv run --project ~/path/to/repo ~/path/to/repo/run_dev.py'
+```
+After local edits, update the installed CLI using
+```bash
+uv tool install --force .
+```
 
 
 ### Notes / Implementation details
