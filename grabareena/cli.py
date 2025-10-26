@@ -15,7 +15,7 @@ def main(argv: Sequence[str] | None = None) -> None:
     ap.add_argument("-r", "--refresh", action="store_true", help="Bypass cache (force fetch)")
     # Prevent using more than one of the timing options
     when = ap.add_mutually_exclusive_group()
-    when.add_argument("-d", "--date", metavar="YYYY-MM-DD|MM-DD", help="Date (default: today, Finnish time)")
+    when.add_argument("-d", "--date", metavar="DATE", help="Date (default: today, Finnish time); format: MM-DD or YYYY-MM-DD")
     when.add_argument("-t", "--tomorrow", action="store_true", help="Use tomorrow's date")
     when.add_argument("-y", "--yesterday", action="store_true", help="Use yesterday's date")
 
