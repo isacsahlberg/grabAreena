@@ -66,10 +66,9 @@ grabAreena/
 ```
 There's also the development helpers that are not packaged
 ```bash
-├─ run_dev.py       # tiny runner for local dev
-├─ uv.lock
-└─ .python-version
 ├─ .python-version
+├─ run_dev.py       # tiny runner for local dev
+└─ uv.lock
 ```
 
 
