@@ -3,6 +3,8 @@ import json
 from pathlib import Path
 from typing import Optional
 import requests
+# import logging
+# log = logging.getLogger(__name__)     # TODO: add debug statements to the functions below
 
 API_BASE = "https://areena.api.yle.fi/v1/ui/schedules/yle-klassinen/{day}.json"
 PARAMS = {
@@ -21,9 +23,9 @@ HEADERS = {
 
 def cache_path(day: date) -> Path:
     """
-    ~/.cache/grabareena/yle-klassinen-{YYYY-MM-DD}.json
+    ~/.grabareena/cache/yle-klassinen-{YYYY-MM-DD}.json
     """
-    root = Path.home() / ".cache" / "grabareena"
+    root = Path.home() / ".grabareena" / "cache"
     root.mkdir(parents=True, exist_ok=True)
     return root / f"yle-klassinen-{day.isoformat()}.json"
 

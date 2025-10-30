@@ -3,9 +3,10 @@ All notable changes to this project will be documented here.
 
 
 
-## [Unreleased]
-[For new updates, add content here, rename this header to the new version (e.g. `[0.2.1]`), and create a new Unreleased one above.]
-
+## [0.3.1] - 2025-10-31
+- Add usage logging; point log file to `~/.grabareena/logs/log.txt`, and also switch the cache path to `~/.grabareena/cache/`.
+- Start to add some log.debug() statements, but only in the main `grabareena/cli.py` file.
+- Add argument `-v/--verbose` to enable DEBUG mode for the logging. `log.debug(...)` calls are present but silent unless verbose is enabled.
 
 
 ## [0.3.0] - 2025-10-23

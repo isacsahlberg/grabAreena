@@ -1,10 +1,11 @@
-import argparse
+import argparse, logging
 from typing import Sequence
 
 from .cache import get_schedule
 from .parse import parse_programs
 from .print import print_programs, print_all_pieces, print_matches
 from .utils import resolve_date, parse_patterns
+from .log   import setup_logging, log_invocation
 
 
 def main(argv: Sequence[str] | None = None) -> None:
@@ -13,6 +14,7 @@ def main(argv: Sequence[str] | None = None) -> None:
     ap.add_argument("-p", "--pattern", action="append", help='Pattern(s). Can repeat or use commas, e.g. -p Bach -p Mozart or -p "Bach, Mozart"')
     ap.add_argument("-P", "--programs", action="store_true", help="List program titles/times")
     ap.add_argument("-r", "--refresh", action="store_true", help="Bypass cache (force fetch)")
+    ap.add_argument("-v", "--verbose", action="store_true", help="Enable debug logging")
     # Prevent using more than one of the timing options
     when = ap.add_mutually_exclusive_group()
     when.add_argument("-d", "--date", metavar="DATE", help="Date (default: today, Finnish time); format: MM-DD or YYYY-MM-DD")
@@ -20,22 +22,41 @@ def main(argv: Sequence[str] | None = None) -> None:
     when.add_argument("-y", "--yesterday", action="store_true", help="Use yesterday's date")
 
     args = ap.parse_args(argv)
-    day = resolve_date(args.date, args.tomorrow, args.yesterday)
+    
+    # Init logging, record the full invocation
+    setup_logging(logging.DEBUG if args.verbose else logging.INFO)
+    log_invocation(list(argv) if argv is not None else None, program_name=__name__)
+    log = logging.getLogger(__name__)
+    log.debug("(debug is ON)")
 
     # Single source of truth for the date: used by cache, endpoint, and parsing
-    payload = get_schedule(day=day, force=args.refresh)
+    day = resolve_date(args.date, args.tomorrow, args.yesterday)
+    log.debug("resolved date: %s", day.isoformat())
+    
+    # Fetch the schedule, log possible errors
+    try:
+        payload = get_schedule(day=day, force=args.refresh)
+    except Exception as e:
+        log.error("fetch failed for %s: %s", day, e)
+        raise
+
+    # Parse
     programs = parse_programs(payload, day)
+    log.debug("parsed programs: %d", len(programs))
 
     patterns = parse_patterns(args.pattern)
     explicitly_passed_patterns = bool(args.pattern)
     
     # Print list of programs only
     if args.programs:
+        log.debug("mode=programs")
         print_programs(programs)
+        log.debug("mode=programs done")
         return
 
     # Print all pieces
     if args.all:
+        log.debug("mode=all_pieces highlight=%s", explicitly_passed_patterns)
         # Only highlight if user explicitly passed -p
         if explicitly_passed_patterns:
             from .print import _highlight_one
@@ -50,12 +71,15 @@ def main(argv: Sequence[str] | None = None) -> None:
                     print(f"  {piece.start:>6} - {piece.end:>6}  --  {_apply_many(piece.description)}")
         else:
             print_all_pieces(programs)
+        log.debug("mode=all_pieces done")
         return
 
     # Default mode (no -a/-P): show matches grouped by pattern
+    log.debug("mode=matches patterns=%s", patterns)
     matched = print_matches(programs, patterns)
     if matched == 0:
         print(f"\n(No matches for {patterns})")
+    log.debug(f"mode=matches patterns done (there were {matched} matches)")
 
 
 if __name__ == "__main__":

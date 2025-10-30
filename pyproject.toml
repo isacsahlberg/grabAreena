@@ -1,6 +1,6 @@
 [project]
 name = "grabareena"
-version = "0.3.0"
+version = "0.3.1"
 description = "Yle Klassinen schedule grabber"
 readme = "README.md"
 requires-python = ">=3.13"
