@@ -1,7 +1,7 @@
 import argparse, logging
 from typing import Sequence
 
-from .cache import get_schedule
+from .cache import get_schedule, prefetch
 from .parse import parse_programs
 from .print import print_programs, print_all_pieces, print_matches
 from .utils import resolve_date, parse_patterns
@@ -15,6 +15,7 @@ def main(argv: Sequence[str] | None = None) -> None:
     ap.add_argument("-P", "--programs", action="store_true", help="List program titles/times")
     ap.add_argument("-r", "--refresh", action="store_true", help="Bypass cache (force fetch)")
     ap.add_argument("-v", "--verbose", action="store_true", help="Enable debug logging")
+    ap.add_argument("-F", "--prefetch", action="store_true", help="Prefetch the next 5 days (stop on first error)")
     # Prevent using more than one of the timing options
     when = ap.add_mutually_exclusive_group()
     when.add_argument("-d", "--date", metavar="DATE", help="Date (default: today, Finnish time); format: MM-DD or YYYY-MM-DD")
@@ -28,6 +29,10 @@ def main(argv: Sequence[str] | None = None) -> None:
     log_invocation(list(argv) if argv is not None else None, program_name=__name__)
     log = logging.getLogger(__name__)
     log.debug("(debug is ON)")
+
+    # If run with --prefetch, then we do only that and exit
+    if args.prefetch:
+        return 0 if prefetch() else 1
 
     # Single source of truth for the date: used by cache, endpoint, and parsing
     day = resolve_date(args.date, args.tomorrow, args.yesterday)
