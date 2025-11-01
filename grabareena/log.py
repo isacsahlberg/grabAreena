@@ -4,6 +4,7 @@ from pathlib import Path
 import sys  #, shlex, time
 
 LOGFILE = "~/.grabareena/logs/log.txt"
+# LOGFILE = "~/.grabareena/logs/log_testing.txt"
 
 def setup_logging(logging_level):
     # Minimal logging: INFO level, prints to the log file
@@ -22,7 +23,7 @@ def setup_logging(logging_level):
     fh.setFormatter(formatter)
     root.addHandler(fh)
 
-    # # Console handler -- uncomment this if you want immediate terminal output as well
+    # # Console handler -- uncomment this if you want immediate terminal output, e.g. for debugging
     # ch = logging.StreamHandler(stream=sys.stdout)
     # ch.setLevel(logging_level)
     # ch.setFormatter(formatter)
