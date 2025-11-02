@@ -1,6 +1,12 @@
 # Changelog
 
 
+## [0.3.2] - 2025-11-02
+- Add `--prefetch` flag to attempt caching schedules for the next 5 days. Sometimes the program descriptions are just short placeholder texts, so the schedules are fetched in chronological order and if some of this placeholder content is found, the process is stopped. Otherwise the schedules are added to the usual cache. Previously-cached days are skipped.
+- Move GET request stuff to `fetch.py`; now `cache.py` is focused on caching.
+- Send versioned User-Agent on requests, also in `fetch.py`.
+
+
 ## [0.3.1] - 2025-10-31
 - Add usage logging; point log file to `~/.grabareena/logs/log.txt`, and also switch the cache path to `~/.grabareena/cache/`.
 - Start to add some log.debug() statements, but only in the main `grabareena/cli.py` file.
