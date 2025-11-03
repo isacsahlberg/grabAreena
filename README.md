@@ -59,6 +59,7 @@ grabAreena/
    ├─ __init__.py
    ├─ cache.py
    ├─ cli.py
+   ├─ fetch.py
    ├─ log.py
    ├─ models.py
    ├─ parse.py
@@ -91,12 +92,17 @@ grabareena [OPTIONS]
 
 ### Optional flags
 ```bash
--d, --date YYYY-MM-DD   date (default: today)
+-d, --date DATE         date (default: today), format: "MM-DD" or "YYYY-MM-DD"
 -t, --tomorrow          use tomorrow (ignored if --date is given)
--r, --refresh           bypass cache (force fetch & save)
+-y, --yesterday         ^ditto yesterday
+
 -p, --pattern PAT       may repeat or use commas (e.g., -p Bach -p Mozart  or  -p "Bach, Mozart")
 -P, --programs          program headers only
 -a, --all               all pieces (if -p is present, highlights inline)
+
+-r, --refresh           bypass cache (force fetch & save)
+-F, --prefetch          pre-load cache for the next 5 days
+-v, --verbose           enable debug logging
 ```
 If you skip the flags altogether, the date defaults to today, and the pattern to a pre-defined set of composers.
 
