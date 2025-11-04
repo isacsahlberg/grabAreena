@@ -11,7 +11,7 @@ from .log   import setup_logging, log_invocation
 def main(argv: Sequence[str] | None = None) -> None:
     ap = argparse.ArgumentParser(prog="grabareena", description="Yle Klassinen schedule grabber")
     ap.add_argument("-a", "--all", action="store_true", help="Print all pieces (for highlighting, explicitly pass the --pattern)")
-    ap.add_argument("-p", "--pattern", action="append", help='Pattern(s). Can repeat or use commas, e.g. -p Bach -p Mozart or -p "Bach, Mozart"')
+    ap.add_argument("-p", "--pattern", metavar="PAT", action="append", help='Pattern(s). Can repeat or use commas, e.g. -p Bach -p Mozart or -p "Bach, Mozart"')
     ap.add_argument("-P", "--programs", action="store_true", help="List program titles/times")
     ap.add_argument("-r", "--refresh", action="store_true", help="Bypass cache (force fetch)")
     ap.add_argument("-v", "--verbose", action="store_true", help="Enable debug logging")
