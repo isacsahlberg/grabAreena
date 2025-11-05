@@ -72,6 +72,7 @@ There's also the development helpers that are not packaged
 ├─ run_dev.py       # tiny runner for local dev
 └─ uv.lock
 ```
+as well as other hidden files.
 
 
 ### What it does
