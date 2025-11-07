@@ -11,7 +11,7 @@ By default, it outputs only the matching pieces that we are looking for -- use y
 
 ### Highlights:
 - Works for a chosen date, defaults to today
-- Fast and polite: responses are cached under `~/.cache/grabareena/...`
+- Fast and polite: responses are cached under `~/.grabareena/cache/...`
 - Clean output with start-end times, supports midnight rollover (`+00:30` style)
 - Simple pattern matching, supports single and multiple strings
 - Additional information available using other flags (see below)
