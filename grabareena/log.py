@@ -27,8 +27,8 @@ def setup_logging(logging_level):
     # ch = logging.StreamHandler(stream=sys.stdout)
     # ch.setLevel(logging_level)
     # ch.setFormatter(formatter)
+    # # ch.setFormatter(logging.Formatter(fmt="%(message)s"))
     # root.addHandler(ch)
-
 
 def log_invocation(argv: list[str] | None = None, program_name="grabareena/run_dev.py"):
     # Record the command that the user ran
