@@ -5,11 +5,12 @@ import sys  #, shlex, time
 
 LOGFILE = "~/.grabareena/logs/log.txt"
 # LOGFILE = "~/.grabareena/logs/log_testing.txt"
+LOGFILE_DEBUG = "~/.grabareena/logs/debug.txt"
 
 def setup_logging(logging_level):
     # Minimal logging: INFO level, prints to the log file
     root = logging.getLogger()
-    root.setLevel(logging_level)
+    root.setLevel(logging.DEBUG)
 
     fmt = "%(asctime)s  %(levelname)-5s  %(name)s  %(message)s"
     datefmt = "%Y-%m-%d %H:%M:%S"
@@ -20,8 +21,17 @@ def setup_logging(logging_level):
     p.parent.mkdir(parents=True, exist_ok=True)
     fh = logging.FileHandler(p, encoding="utf-8")
     fh.setLevel(logging_level)
+    # fh.setLevel(logging.INFO)
     fh.setFormatter(formatter)
     root.addHandler(fh)
+
+    # Add another file handler, logs everything at DEBUG level
+    p2 = Path(LOGFILE_DEBUG).expanduser()
+    p2.parent.mkdir(parents=True, exist_ok=True)
+    fh2 = logging.FileHandler(p2, encoding="utf-8")
+    fh2.setLevel(logging.DEBUG)
+    fh2.setFormatter(formatter)
+    root.addHandler(fh2)
 
     # # Console handler -- uncomment this if you want immediate terminal output, e.g. for debugging
     # ch = logging.StreamHandler(stream=sys.stdout)
