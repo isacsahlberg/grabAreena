@@ -14,7 +14,7 @@ def main(argv: Sequence[str] | None = None) -> None:
     ap.add_argument("-p", "--pattern", metavar="PAT", action="append", help='Pattern(s). Can repeat or use commas, e.g. -p Bach -p Mozart or -p "Bach, Mozart"')
     ap.add_argument("-P", "--programs", action="store_true", help="List program titles/times")
     ap.add_argument("-r", "--refresh", action="store_true", help="Bypass cache (force fetch)")
-    ap.add_argument("-v", "--verbose", action="store_true", help="Enable debug logging")
+    ap.add_argument("-v", "--verbose", action="store_true", help="Output (debug-level) log to the console")
     ap.add_argument("-F", "--prefetch", action="store_true", help="Prefetch the next 5 days (stop on first error)")
     # Prevent using more than one of the timing options
     when = ap.add_mutually_exclusive_group()
@@ -25,10 +25,9 @@ def main(argv: Sequence[str] | None = None) -> None:
     args = ap.parse_args(argv)
     
     # Init logging, record the full invocation
-    setup_logging(logging.DEBUG if args.verbose else logging.INFO)
+    setup_logging(verbose=args.verbose)
     log_invocation(list(argv) if argv is not None else None, program_name=__name__)
     log = logging.getLogger(__name__)
-    log.debug("(debug is ON)")
 
     # If run with --prefetch, then we do only that and exit
     if args.prefetch:

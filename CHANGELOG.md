@@ -1,6 +1,11 @@
 # Changelog
 
 
+## [0.3.3] - 2025-12-01
+- Set up separate log files for info and debug levels, both of which are always on.
+- Change the `--verbose` flag to produce console output (debug-level)
+
+
 ## [0.3.2] - 2025-11-02
 - Add `--prefetch` flag to attempt caching schedules for the next 5 days. Sometimes the program descriptions are just short placeholder texts, so the schedules are fetched in chronological order and if some of this placeholder content is found, the process is stopped. Otherwise the schedules are added to the usual cache. Previously-cached days are skipped.
 - Move GET request stuff to `fetch.py`; now `cache.py` is focused on caching.

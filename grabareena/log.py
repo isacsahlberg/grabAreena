@@ -4,11 +4,10 @@ from pathlib import Path
 import sys  #, shlex, time
 
 LOGFILE = "~/.grabareena/logs/log.txt"
-# LOGFILE = "~/.grabareena/logs/log_testing.txt"
+# LOGFILE="~/.grabareena/logs/log_testing.txt"
 LOGFILE_DEBUG = "~/.grabareena/logs/debug.txt"
 
-def setup_logging(logging_level):
-    # Minimal logging: INFO level, prints to the log file
+def setup_logging(verbose=False):
     root = logging.getLogger()
     root.setLevel(logging.DEBUG)
 
@@ -16,16 +15,15 @@ def setup_logging(logging_level):
     datefmt = "%Y-%m-%d %H:%M:%S"
     formatter = logging.Formatter(fmt=fmt, datefmt=datefmt)
     
-    # File handler
-    p = Path(LOGFILE).expanduser()
-    p.parent.mkdir(parents=True, exist_ok=True)
-    fh = logging.FileHandler(p, encoding="utf-8")
-    fh.setLevel(logging_level)
-    # fh.setLevel(logging.INFO)
-    fh.setFormatter(formatter)
-    root.addHandler(fh)
+    # File handler for INFO level (always on)
+    p1 = Path(LOGFILE).expanduser()
+    p1.parent.mkdir(parents=True, exist_ok=True)
+    fh1 = logging.FileHandler(p1, encoding="utf-8")
+    fh1.setLevel(logging.INFO)
+    fh1.setFormatter(formatter)
+    root.addHandler(fh1)
 
-    # Add another file handler, logs everything at DEBUG level
+    # File handler for DEBUG level (always on)
     p2 = Path(LOGFILE_DEBUG).expanduser()
     p2.parent.mkdir(parents=True, exist_ok=True)
     fh2 = logging.FileHandler(p2, encoding="utf-8")
@@ -33,12 +31,12 @@ def setup_logging(logging_level):
     fh2.setFormatter(formatter)
     root.addHandler(fh2)
 
-    # # Console handler -- uncomment this if you want immediate terminal output, e.g. for debugging
-    # ch = logging.StreamHandler(stream=sys.stdout)
-    # ch.setLevel(logging_level)
-    # ch.setFormatter(formatter)
-    # # ch.setFormatter(logging.Formatter(fmt="%(message)s"))
-    # root.addHandler(ch)
+    # Console handler, controlled by --verbose flag
+    if verbose:
+        ch = logging.StreamHandler(stream=sys.stdout)
+        ch.setLevel(logging.DEBUG)
+        ch.setFormatter(formatter)  # ch.setFormatter(logging.Formatter(fmt="%(message)s"))
+        root.addHandler(ch)
 
 def log_invocation(argv: list[str] | None = None, program_name="grabareena/run_dev.py"):
     # Record the command that the user ran
