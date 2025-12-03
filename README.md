@@ -103,7 +103,7 @@ grabareena [OPTIONS]
 
 -r, --refresh           bypass cache (force fetch & save)
 -F, --prefetch          pre-load cache for the next 5 days
--v, --verbose           enable debug logging
+-v, --verbose           print debug log to the console
 ```
 If you skip the flags altogether, the date defaults to today, and the pattern to a pre-defined set of composers.
 
