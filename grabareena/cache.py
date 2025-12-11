@@ -1,15 +1,13 @@
 from datetime import date, timedelta
-import json
 from pathlib import Path
-from typing import Optional
+import json
 import logging
-
 import re
-timestamp_pattern = re.compile(r"\d{1,2}[:.]\d{2}")
 
 from .fetch import fetch_schedule
 
-log = logging.getLogger(__name__)     # TODO: add debug statements to the functions below
+log = logging.getLogger(__name__)
+timestamp_pattern = re.compile(r"\d{1,2}[:.]\d{2}")
 
 
 def get_cache_path(day: date) -> Path:
@@ -24,9 +22,11 @@ def get_cache_path(day: date) -> Path:
 def load_cache(day: date) -> dict | None:
     path = get_cache_path(day)
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        data = json.loads(path.read_text(encoding="utf-8"))
+        log.debug("loaded cache file: %s", path.name)
+        return data
     except FileNotFoundError:
-        return None  # no cache yet
+        return None
 
 
 def save_cache(day: date, payload: dict) -> None:
@@ -34,6 +34,7 @@ def save_cache(day: date, payload: dict) -> None:
     tmp = path.with_suffix(".json.tmp")
     tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     tmp.replace(path)
+    log.info("cached schedule for %s", day.isoformat())
 
 
 def schedule_valid(json_, min_len=30) -> bool:
@@ -75,7 +76,6 @@ def get_schedule(day: date, force=False, allow_placeholders=True, print_=False) 
     if not allow_placeholders and not valid:
         raise ValueError(f"fetched schedule for {day.isoformat()} includes a placeholder program")
     save_cache(day, fresh)
-    log.info("cached schedule for %s", day.isoformat())
     if print_: print(f"cached schedule for {day.isoformat()}")
     return fresh
 
