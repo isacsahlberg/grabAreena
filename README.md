@@ -12,7 +12,7 @@ By default, it outputs only the matching pieces that we are looking for -- use y
 ### Highlights:
 - Works for a chosen date, defaults to today
 - Fast and polite: responses are cached under `~/.grabareena/cache/...`
-- Clean output with start-end times, supports midnight rollover (`+00:30` style)
+- Clean output with start-end times, supports midnight rollover (`+00:30`-style)
 - Simple pattern matching, supports single and multiple strings
 - Additional information available using other flags (see below)
 
@@ -82,7 +82,7 @@ as well as other hidden files.
   - program list (headers only)
   - all pieces (full schedule, grouped by program)
   - pattern search, grouped by pattern (matching is case-insensitive)
-- Times crossing midnight get a leading `+`
+- Times crossing midnight get a leading `+`; times on the previous day get a leading `-`.
 
 
 ### Usage

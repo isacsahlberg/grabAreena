@@ -6,7 +6,7 @@ from datetime import date
 # for simplicity, use dataclasses
 @dataclass
 class Piece:
-    start: str  # "HH:MM" or "+HH:MM"
+    start: str  # "HH:MM" (or "+HH:MM", "-HH:MM")
     end: str
     description: str
     def __str__(self):
