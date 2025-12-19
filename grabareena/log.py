@@ -48,21 +48,3 @@ def log_invocation(argv: list[str] | None = None, program_name="grabareena/run_d
         # add separator line to the log file if we are in DEBUG mode
         logging.getLogger("-"*53).debug("")
     inv.info(f"user ran: {cmd}")
-
-
-# Add this to the main cli.py
-"""
-import logging
-from .log import setup_logging, log_invocation
-~ def main(...):
-
-setup_logging()
-log_invocation(argv)  # logs usage command
-
-# arguments
-...
-
-log = logging.getLogger("grabareena")
-log.info(f"resolved date: {str(day)})
-
-"""
