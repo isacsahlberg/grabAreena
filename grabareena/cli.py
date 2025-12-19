@@ -36,7 +36,7 @@ def main(argv: Sequence[str] | None = None) -> None:
     if args.prefetch:
         return 0 if prefetch() else 1
 
-    # Single source of truth for the date: used by cache, endpoint, and parsing
+    # Single source of truth for the date
     day = resolve_date(args.date, args.tomorrow, args.yesterday, args.after_tomorrow, args.before_yesterday)
     log.debug("resolved date: %s", day.isoformat())
     
@@ -47,12 +47,11 @@ def main(argv: Sequence[str] | None = None) -> None:
         log.error("fetch failed for %s: %s", day, e)
         raise
 
-    # Parse
+    # Parse programs and patterns
     programs = parse_programs(payload, day)
     log.debug("parsed programs: %d", len(programs))
-
     patterns = parse_patterns(args.pattern)
-    explicitly_passed_patterns = bool(args.pattern)
+    log.debug("parsed patterns (%d): %s", len(patterns), patterns)
     
     # Print list of programs only
     if args.programs:
@@ -63,6 +62,7 @@ def main(argv: Sequence[str] | None = None) -> None:
 
     # Print all pieces
     if args.all:
+        explicitly_passed_patterns = bool(args.pattern)
         log.debug("mode=all_pieces highlight=%s", explicitly_passed_patterns)
         # Only highlight if user explicitly passed -p
         if explicitly_passed_patterns:
