@@ -22,6 +22,8 @@ def main(argv: Sequence[str] | None = None) -> None:
     when.add_argument("-d", "--date", metavar="DATE", help="Date (default: today, Finnish time); format: MM-DD or YYYY-MM-DD")
     when.add_argument("-t", "--tomorrow", action="store_true", help="Use tomorrow's date")
     when.add_argument("-y", "--yesterday", action="store_true", help="Use yesterday's date")
+    when.add_argument("-T", "--after_tomorrow", action="store_true", help="Use date for day after tomorrow")
+    when.add_argument("-Y", "--before_yesterday", action="store_true", help="Use date for day before yesterday")
 
     args = ap.parse_args(argv)
     
@@ -35,7 +37,7 @@ def main(argv: Sequence[str] | None = None) -> None:
         return 0 if prefetch() else 1
 
     # Single source of truth for the date: used by cache, endpoint, and parsing
-    day = resolve_date(args.date, args.tomorrow, args.yesterday)
+    day = resolve_date(args.date, args.tomorrow, args.yesterday, args.after_tomorrow, args.before_yesterday)
     log.debug("resolved date: %s", day.isoformat())
     
     # Fetch the schedule, log possible errors

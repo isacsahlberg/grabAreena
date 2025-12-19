@@ -28,9 +28,11 @@ def _parse_date_arg(s: str) -> date:
         raise SystemExit(f"Invalid --date: {s} (use YYYY-MM-DD or MM-DD)")
 
 
-def resolve_date(date_str: str, tomorrow: bool, yesterday: bool) -> date:
+def resolve_date(date_str: str, tomorrow: bool, yesterday: bool, after_tomorrow: bool, before_yesterday: bool) -> date:
     # These arguments will have been mutually exclusive, so simple if statements will do
     if date_str:  return _parse_date_arg(date_str)
-    if tomorrow:  return date.today() + timedelta(days=1)
-    if yesterday: return date.today() - timedelta(days=1)
+    if tomorrow:         return date.today() + timedelta(days=1)
+    if yesterday:        return date.today() - timedelta(days=1)
+    if after_tomorrow:   return date.today() + timedelta(days=2)
+    if before_yesterday: return date.today() - timedelta(days=2)
     return date.today()  # If none of the timing flags were used, default to today
