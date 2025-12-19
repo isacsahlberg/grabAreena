@@ -1,11 +1,11 @@
-import logging
-# from logging.handlers import RotatingFileHandler
 from pathlib import Path
-import sys  #, shlex, time
+import logging
+import sys
 
 LOGFILE = "~/.grabareena/logs/log.txt"
 # LOGFILE="~/.grabareena/logs/log_testing.txt"
 LOGFILE_DEBUG = "~/.grabareena/logs/debug.txt"
+
 
 def setup_logging(verbose=False):
     root = logging.getLogger()
@@ -37,6 +37,7 @@ def setup_logging(verbose=False):
         ch.setLevel(logging.DEBUG)
         ch.setFormatter(formatter)  # ch.setFormatter(logging.Formatter(fmt="%(message)s"))
         root.addHandler(ch)
+
 
 def log_invocation(argv: list[str] | None = None, program_name="grabareena/run_dev.py"):
     # Record the command that the user ran

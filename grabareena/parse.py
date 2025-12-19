@@ -48,10 +48,12 @@ def _iso_to_date(iso: str) -> date:
     """
     return datetime.fromisoformat(iso.replace("Z", "+00:00")).date()
 
+
 def _prefixed_time(t, offset):
     if offset < 0: return "-" + t
     if offset > 0: return "+" + t
     return t
+
 
 def fix_times(times, date_: date, start_iso, end_iso):
     """Return times with '+' prefixes where appropriate, and add start/end times."""

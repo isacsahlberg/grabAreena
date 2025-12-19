@@ -1,5 +1,6 @@
-import argparse, logging
 from typing import Sequence
+import argparse
+import logging
 
 from .cache import get_schedule, prefetch
 from .parse import parse_programs

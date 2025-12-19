@@ -1,9 +1,8 @@
 from datetime import date, datetime, timedelta
 from termcolor import colored
-import re
-
 
 DEFAULT_PATTERNS = ["Bach", "Mozart", "Schumann"]
+
 
 def parse_patterns(args_pattern) -> list[str]:
     if not args_pattern:                 # if no -p given, use defaults
