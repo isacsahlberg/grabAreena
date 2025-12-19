@@ -1,6 +1,12 @@
 # Changelog
 
 
+## [0.3.4] - 2025-12-19
+- Add timestamp validation: When fetching a new schedule, now also log and print a warning if the program description is long but doesn't include any timestamps. This happens occasionally with the database, sometimes it gets fixed just before that particular day arrives, so forcing a refetch may do the trick. Schdules with this deficiency are neverthesless saved into the cache (only placeholder schedules (introduced in v0.3.2) are skipped and only when using the --prefetch flag
+- In addition to tomorrow's times getting a leading `+`, add the same except a leading `-` for yesterday's times
+- Add flags -T and -Y for day after tomorrow and day before yesterday (double "-t" and "-y", so to speak)
+
+
 ## [0.3.3] - 2025-12-01
 - Set up separate log files for info and debug levels, both of which are always on.
 - Change the `--verbose` flag to produce console output (debug-level)
