@@ -1,6 +1,10 @@
 # Changelog
 
 
+## [0.3.5] - 2025-12-31
+- Change the `--prefetch` flag to loop forwards including the current date, as well as then looping backwards by 10 days. (Helps with saving a bigger pile of cached schedules for future reference, if the tool has not been used in a week or so.) The `cache.prefetch` function no longer return True or False based on having found all schedules, but instead return nothing. Accordingly, `cli.py` just calls that function and then returns 0, assuming no un-caught errors in `cache.prefetch`
+
+
 ## [0.3.4] - 2025-12-19
 - Add timestamp validation: When fetching a new schedule, now also log and print a warning if the program description is long but doesn't include any timestamps. This happens occasionally with the database, sometimes it gets fixed just before that particular day arrives, so forcing a refetch may do the trick. Schdules with this deficiency are neverthesless saved into the cache (only placeholder schedules (introduced in v0.3.2) are skipped and only when using the --prefetch flag
 - In addition to tomorrow's times getting a leading `+`, add the same except a leading `-` for yesterday's times

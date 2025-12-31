@@ -34,7 +34,8 @@ def main(argv: Sequence[str] | None = None) -> None:
 
     # If run with --prefetch, then we do only that and exit
     if args.prefetch:
-        return 0 if prefetch() else 1
+        prefetch()
+        return 0
 
     # Single source of truth for the date
     day = resolve_date(args.date, args.tomorrow, args.yesterday, args.after_tomorrow, args.before_yesterday)
