@@ -80,25 +80,45 @@ def get_schedule(day: date, force=False, allow_placeholders=True, print_=False) 
     return fresh
 
 
-def prefetch(days_ahead=5, days_back=10):
+def _prefetch_forward(days_ahead=5):
     """
-    For pre-fetching, check that the schedule programs are valid. For a week ahead, there are
-    usually program descriptions missing, or just short templates.
-    If we see placeholder content, we don't save those schedules to the cache.
-    If we find new schedules that we add to the cache, print that to the console.
-    (Also go backwards; useful if we want to keep a record of old schedules.)
+    Pre-fetch upcoming schedules.
+    For a week ahead, there are usually program descriptions missing, or just short templates. This
+    stops at the first placeholder schedule.
     """
-    ranges = [
-        ("forward", range(days_ahead + 1)),
-        ("backward", range(-1, -days_back - 1, -1)),
-    ]
-    for direction, r in ranges:
-        days = [date.today() + timedelta(days=i) for i in r]
-        log.debug("pre-fetch %s: %s to %s", direction, days[0], days[-1])
-        for day in days:
-            try:
-                log.debug("pre-fetch: fetching %s", day.isoformat())
-                _ = get_schedule(day, force=False, allow_placeholders=False, print_=True)
-            except Exception as e:
-                log.debug("pre-fetch: stopped on %s: %r", day.isoformat(), e)
-                break
+    days = [date.today() + timedelta(days=i) for i in range(days_ahead + 1)]
+    log.debug("pre-fetch forward: %s to %s", days[0], days[-1])
+    for day in days:
+        try:
+            log.debug("pre-fetch: fetching %s", day.isoformat())
+            _ = get_schedule(day, force=False, allow_placeholders=False, print_=True)
+        except Exception as e:
+            log.debug("pre-fetch: stopped on %s: %r", day.isoformat(), e)
+            break
+
+
+def _prefetch_backward(days_back=10):
+    """
+    Pre-fetch (backfill) past schedules.
+    The database typically contains data for roughly 10 days backward. For regular use, past
+    schedules are most of the time already cached.
+    """
+    days = [date.today() - timedelta(days=i) for i in range(1, days_back + 1)]
+    cached = [d for d in days if get_cache_path(d).exists()]
+    missing = [d for d in days if d not in cached]
+    log.debug("pre-fetch backward: %d/%d days cached (%s to %s)",
+              len(cached), len(days), days[-1], days[0])
+    if not missing:
+        return
+    log.debug("pre-fetch backward: missing %s", [d.isoformat() for d in missing])
+    for day in missing:
+        try:
+            log.debug("pre-fetch: fetching %s", day.isoformat())
+            _ = get_schedule(day, force=False, allow_placeholders=False, print_=True)
+        except Exception as e:
+            log.debug("pre-fetch: failed %s: %r", day.isoformat(), e)
+
+
+def prefetch():
+    _prefetch_forward()
+    _prefetch_backward()
