@@ -1,6 +1,10 @@
 # Changelog
 
 
+## [0.3.6] - 2026-04-15
+- Fix the API fetch: Yle now requires a `client=yle-areena-web` query parameter. Without it, the server returns 400 (`Unsupported client/version combination: default-default-default 10`)
+
+
 ## [0.3.5] - 2025-12-31
 - Change the `--prefetch` flag to loop forwards including the current date, as well as then looping backwards by 10 days. (Helps with saving a bigger pile of cached schedules for future reference, if the tool has not been used in a week or so.) The `cache.prefetch` function no longer return True or False based on having found all schedules, but instead return nothing. Accordingly, `cli.py` just calls that function and then returns 0, assuming no un-caught errors in `cache.prefetch`
 

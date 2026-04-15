@@ -9,6 +9,7 @@ PARAMS = {
     "language": "fi",
     "v": 10,
     "limit": 100,
+    "client": "yle-areena-web",
 }
 
 
