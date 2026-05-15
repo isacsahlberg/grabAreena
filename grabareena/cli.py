@@ -57,6 +57,17 @@ def main(argv: Sequence[str] | None = None) -> None:
     # Print list of programs only
     if args.programs:
         log.debug("mode=programs")
+        # Get the headlines (if we have internet connection)
+        from .fetch import fetch_headline
+        log.debug("mode=programs -- fetching headlines for %d programs", len(programs))
+        for i, p in enumerate(programs):
+            if p.url:
+                p.headline = fetch_headline(p.url)
+                # If we aren't getting headlines, skip the rest
+                if i == 0 and p.headline is None:
+                    log.debug("headline fetch failed for first program, skipping rest")
+                    break
+        log.debug("mode=programs -- fetched %d headlines", sum(1 for p in programs if p.headline))
         print_programs(programs)
         log.debug("mode=programs done")
         return

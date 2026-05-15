@@ -38,10 +38,16 @@ def print_matches(programs: list[Program],
     return total
 
 
+# def print_programs(programs: list[Program]) -> None:
+#     title_w = max(len(p.title) for p in programs)
+#     for p in programs:
+#         print(f"{p.start:>5} - {p.end:<5}  --  {p.title:<{title_w}}  --  {p.url}")
+
 def print_programs(programs: list[Program]) -> None:
     title_w = max(len(p.title) for p in programs)
     for p in programs:
-        print(f"{p.start:>5} - {p.end:<5}  --  {p.title:<{title_w}}  --  {p.url}")
+        headline = f"  --  {p.headline}" if p.headline else ""
+        print(f"{p.start:>5} - {p.end:<5}  --  {p.title:<{title_w}}  --  {p.url}{headline}")
 
 
 def print_all_pieces(programs: list[Program]) -> None:

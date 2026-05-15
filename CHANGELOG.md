@@ -1,6 +1,10 @@
 # Changelog
 
 
+## [0.3.7] - 2026-05-15
+- Add (editorial) headlines to `--programs` output, fetched from each program's Areena page (`og:title`). If the first fetch fails, e.g. because of no internet connection, the rest are skipped.
+
+
 ## [0.3.6] - 2026-04-15
 - Fix the API fetch: Yle now requires a `client=yle-areena-web` query parameter. Without it, the server returns 400 (`Unsupported client/version combination: default-default-default 10`)
 
